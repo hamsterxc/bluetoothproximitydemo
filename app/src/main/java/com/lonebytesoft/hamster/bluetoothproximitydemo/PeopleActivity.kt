@@ -74,7 +74,7 @@ class PeopleActivity : AppCompatActivity() {
             return
         }
 
-        setBluetoothName()
+        bluetoothAdapter.name = generateNameFromId(getCurrentProfileId())
 
         if (bluetoothAdapter.isDiscovering) {
             bluetoothAdapter.cancelDiscovery()
@@ -91,10 +91,9 @@ class PeopleActivity : AppCompatActivity() {
         registerReceiver(bluetoothBroadcastReceiver, intentFilter)
     }
 
-    private fun setBluetoothName() {
+    private fun getCurrentProfileId(): String {
         Profile.fetchProfileForCurrentAccessToken()
-        val facebookId = Profile.getCurrentProfile().id
-        bluetoothAdapter.name = generateNameFromId(facebookId)
+        return Profile.getCurrentProfile().id
     }
 
     private fun updateList() {
@@ -174,6 +173,7 @@ class PeopleActivity : AppCompatActivity() {
                         .show()
                     Log.d("bluetoothproximitydemo", "Discovery finished")
 
+                    ids.add(0, getCurrentProfileId())
                     updateList()
                 }
             }
