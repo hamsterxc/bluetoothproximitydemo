@@ -99,6 +99,13 @@ class PeopleActivity : AppCompatActivity() {
 
     private fun updateList() {
         graphResponses.clear()
+
+        if (ids.isEmpty()) {
+            recyclerView.swapAdapter(PeopleAdapter(emptyArray(), this), true)
+            list_people.removeAllViews()
+            return
+        }
+
         val accessToken = AccessToken.getCurrentAccessToken()
         val requestBatch = GraphRequestBatch(
             ids.toSet()
