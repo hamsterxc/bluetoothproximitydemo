@@ -14,9 +14,11 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
+import android.view.View
 import com.facebook.*
 import kotlinx.android.synthetic.main.activity_people.*
 import kotlinx.android.synthetic.main.content_people.*
+import kotlinx.android.synthetic.main.overlay_progress.*
 
 class PeopleActivity : AppCompatActivity() {
 
@@ -74,6 +76,8 @@ class PeopleActivity : AppCompatActivity() {
             return
         }
 
+        overlay_progress.visibility = View.VISIBLE
+
         bluetoothAdapter.name = generateNameFromId(getCurrentProfileId())
 
         if (bluetoothAdapter.isDiscovering) {
@@ -102,6 +106,7 @@ class PeopleActivity : AppCompatActivity() {
         if (ids.isEmpty()) {
             recyclerView.swapAdapter(PeopleAdapter(emptyArray(), this), true)
             list_people.removeAllViews()
+            overlay_progress.visibility = View.GONE
             return
         }
 
@@ -144,6 +149,7 @@ class PeopleActivity : AppCompatActivity() {
                 this
             )
             recyclerView.swapAdapter(adapter, true)
+            overlay_progress.visibility = View.GONE
         }
 
         requestBatch.executeAsync()

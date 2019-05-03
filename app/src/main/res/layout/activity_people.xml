@@ -37,4 +37,6 @@
 
     <include layout="@layout/content_people"/>
 
+    <include layout="@layout/overlay_progress"/>
+
 </android.support.design.widget.CoordinatorLayout>
