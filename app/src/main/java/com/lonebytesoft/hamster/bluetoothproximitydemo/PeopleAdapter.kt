@@ -1,8 +1,6 @@
 package com.lonebytesoft.hamster.bluetoothproximitydemo
 
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -37,11 +35,6 @@ class PeopleAdapter(
             .into(holder.view.findViewById<ImageView>(R.id.item_people_image))
 
         holder.view.findViewById<TextView>(R.id.item_people_text).text = information.name
-
-        holder.view.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/${information.id}"))
-            context.startActivity(intent)
-        }
     }
 
     override fun getItemCount() = dataset.size
