@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Bluetooth Proximity Demo</string>
+    <string name="facebook_app_id">1165060310339759</string>
+    <string name="fb_login_protocol_scheme">fb1165060310339759</string>
+    <string name="title_activity_people">People nearby</string>
+    <string name="action_settings">Settings</string>
+</resources>
